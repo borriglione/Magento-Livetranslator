@@ -1,0 +1,8 @@
+<config>
+    <modules>
+        <Netresearch_Livetranslator>
+            <active>true</active>
+            <codePool>community</codePool>
+        </Netresearch_Livetranslator>
+    </modules>
+</config>
