@@ -48,6 +48,17 @@
                 </Netresearch_Livetranslator>
             </modules>
         </translate>
+        <events>
+            <controller_action_predispatch> 
+                <observers>
+                    <livetranslator_disable_cache>
+                        <type>singleton</type>
+                        <class>livetranslator/observer</class>
+                        <method>disableCache</method>
+                    </livetranslator_disable_cache>
+                </observers>
+            </controller_action_predispatch>
+        </events>
     </frontend>
     <adminhtml>
         <translate>
