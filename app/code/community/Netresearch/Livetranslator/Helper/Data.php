@@ -26,42 +26,25 @@
 
 
 /**
- * Switch controller for enabling and disabling inline translation on-the-fly
+ * Livetranslator helper
  *
  * @category   Netresearch
  * @package    Netresearch_Livetranslator
  * @author     Mario Behrendt <mario.behrendt@netresearch.de>
  */
-class Netresearch_Livetranslator_SwitchController extends Mage_Core_Controller_Front_Action
+class Netresearch_Livetranslator_Helper_Data extends Mage_Core_Helper_Abstract
 {
     /**
-     * Enable inline translation for the current user if hash matches expected value 
+     * Generate hash based on current time 
      * 
-     * @return void
+     * @return string
      */
-    public function enableAction()
+    public function getCurrentHash()
     {
-        $hash = $this->_request->getParam('hash', '');
-        $expected = Mage::helper('livetranslator')->getCurrentHash();
+        $secret = Mage::getConfig()->getNode('global/crypt/key');
+        // timestamp without seconds part
+        $time = substr(time(), 0, -2);
 
-        if ($hash == $expected || $hash == $expected - 1) {
-            $session = Mage::getSingleton('core/session');
-            $session->setInlineTranslationEnabled(true);
-        }
-
-        $this->_redirectUrl(Mage::getBaseUrl());
-    }
-
-    /**
-     * Disable inline translation for the current user 
-     * 
-     * @return void
-     */
-    public function disableAction()
-    {
-        $session = Mage::getSingleton('core/session');
-        $session->setInlineTranslationEnabled(false);
-
-        $this->_redirectUrl(Mage::getBaseUrl());
+        return sha1($secret . $time);
     }
 }

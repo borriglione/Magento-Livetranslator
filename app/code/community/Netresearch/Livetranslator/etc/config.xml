@@ -11,6 +11,11 @@
                 <class>Netresearch_Livetranslator_Block</class> 
             </livetranslator>
         </blocks>
+        <helpers>
+            <livetranslator>
+                <class>Netresearch_Livetranslator_Helper</class> 
+            </livetranslator>
+        </helpers>
         <models>
             <livetranslator>
                 <class>Netresearch_Livetranslator_Model</class> 

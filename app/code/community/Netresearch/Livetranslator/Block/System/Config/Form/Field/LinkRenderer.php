@@ -43,8 +43,6 @@ extends Mage_Adminhtml_Block_System_Config_Form_Field
      */
     protected function _getElementHtml(Varien_Data_Form_Element_Abstract $element)
     {
-        $hash = sha1(Mage::getConfig()->getNode('global/crypt/key') . date('i'));
-
         // Timeout text
         $id = 'enable-inline-translation-link';
         $txt = $this->__('Disabled for security reasons, please reload.');
@@ -52,6 +50,8 @@ extends Mage_Adminhtml_Block_System_Config_Form_Field
         // Build Javascript
         $script = sprintf('setTimeout("$(\'%s\').update(\'%s\')", 60000)', $id, $txt);
         $js = sprintf('<script type="text/javascript">%s</script>', $script);
+
+        $hash = Mage::helper('livetranslator')->getCurrentHash();
 
         $url = Mage::getUrl('livetranslator/switch/enable', array('hash' => $hash));
         $trans = $this->__('Enable inline translation for this session');
