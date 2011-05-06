@@ -8,7 +8,6 @@
                         <enable_inline_translation translate="label">
                             <label>Enabled for current session</label> 
                             <frontend_model>livetranslator/system_config_form_field_linkRenderer</frontend_model>
-                            <backend_model>livetranslator/adminhtml_system_config_backend_session</backend_model>
                             <sort_order>110</sort_order>
                             <show_in_default>1</show_in_default>
                             <show_in_website>1</show_in_website>
