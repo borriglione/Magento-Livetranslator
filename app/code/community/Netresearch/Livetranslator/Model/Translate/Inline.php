@@ -35,7 +35,7 @@
 class Netresearch_Livetranslator_Model_Translate_Inline extends Mage_Core_Model_Translate_Inline
 {
     /**
-     * Is enabled and allowed Inline Translates
+     * Is enabled and allowes inline translations
      *
      * @param mixed $store
      * @return bool
