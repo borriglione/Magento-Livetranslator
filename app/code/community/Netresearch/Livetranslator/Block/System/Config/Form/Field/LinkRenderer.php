@@ -53,7 +53,9 @@ extends Mage_Adminhtml_Block_System_Config_Form_Field
 
         $hash = Mage::helper('livetranslator')->getCurrentHash();
 
-        $url = Mage::getUrl('livetranslator/switch/enable', array('hash' => $hash));
+        $store = Mage::getModel('core/store')->getCollection()->addFieldToFilter('is_active = ?', 1)->getFirstItem();
+
+        $url = Mage::getUrl('livetranslator/switch/enable', array('hash' => $hash, '_store' => $store->getId()));
         $trans = $this->__('Enable inline translation for this session');
 
         $link = sprintf('<a href="%s" target="_blank">%s</a>', $url, $trans);
